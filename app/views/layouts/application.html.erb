@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ClientManagement</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+</head>
+
+<body class="min-vh-100">
+<div class="container">
+  <p class="alert"><%= alert %></p>
+  <div>
+    topbard
+  </div>
+  <div>sidebar</div>
+  <div>content
+    <%= yield %>
+  </div>
+</div>
+</body>
+</html>
