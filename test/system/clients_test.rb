@@ -18,7 +18,7 @@ class ClientsTest < ApplicationSystemTestCase
     fill_in "Fullname", with: @client.fullname
     fill_in "Notes", with: @client.notes
     fill_in "Phone number", with: @client.phone_number
-    fill_in "String", with: @client.string
+    fill_in "Status", with: @client.status
     click_on "Create Client"
 
     assert_text "Client was successfully created"
@@ -33,7 +33,7 @@ class ClientsTest < ApplicationSystemTestCase
     fill_in "Fullname", with: @client.fullname
     fill_in "Notes", with: @client.notes
     fill_in "Phone number", with: @client.phone_number
-    fill_in "String", with: @client.string
+    fill_in "Status", with: @client.status
     click_on "Update Client"
 
     assert_text "Client was successfully updated"
