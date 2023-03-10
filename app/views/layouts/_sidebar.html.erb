@@ -5,16 +5,16 @@
     <p class="mb-0 date text-muted">20/20/2020</p>
   </section>
   <section class="menu">
-    <a href="/" class="active">
+    <%= link_to root_path do %>
       <div class="menu-item">
         <i class="bi bi-file-earmark-bar-graph">Home</i>
       </div>
-    </a>
-    <a href="/">
+    <% end %>
+    <%= link_to clients_path do %>
       <div class="menu-item">
         <i class="bi bi-people">Clients</i>
       </div>
-    </a>
+    <% end %>
     <a href="/">
       <div class="menu-item">
         <i class="bi bi-card-checklist">ToDo</i>
@@ -29,7 +29,7 @@
   <section class="profile">
     <p class="h1">Profile:</p>
     <%= button_to("Logout", destroy_user_session_path,
-                class: "btn btn-danger logout-button", method: :delete) %>
+                  class: "btn btn-danger logout-button", method: :delete) %>
   </section>
   <section class="info-box mt-3">
     <h3>Marcin Biłka CRM</h3>
