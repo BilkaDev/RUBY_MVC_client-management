@@ -1,2 +1,99 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  min-width: 1300px;
+  background-color: #181d23;
+  font-size: 1.6rem;
+}
+
+.devise-container {
+  border-radius: 15px;
+  background-color: white;
+}
+
+.dashboard {
+  width: 1600px;
+  height: 90%;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.active {
+  background-color: #222753;
+  border-radius: 8px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #2a2e5f;
+}
+
+.date-box {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 160px;
+}
+
+.date-box .day {
+  font-size: 2rem;
+}
+
+.date-box .time {
+  font-size: 4rem;
+}
+
+.menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  gap: 1.5rem;
+}
+
+.menu a {
+  text-decoration: none;
+  width: 100%;
+
+}
+.menu-item {
+  text-align: left;
+  padding-left: 6rem;
+  border-radius: 8px;
+  color: white;
+}
+
+.menu-item i:before {
+  margin-right: 1rem;
+}
+
+
+.menu-item:hover {
+  background-color: #31306c;
+
+}
+
+
+.content {
+  background-color: #f0f3f8;
+}

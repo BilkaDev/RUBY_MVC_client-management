@@ -10,15 +10,15 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 
-<body class="min-vh-100">
-<div class="container">
-  <p class="alert"><%= alert %></p>
-  <div>
-    topbard
-  </div>
-  <div>sidebar</div>
-  <div>content
-    <%= yield %>
+<body>
+<p class="alert"><%= alert %></p>
+<div class="dashboard">
+  <div class="row m-0 h-100">
+    <%= render 'layouts/sidebar' %>
+    <div class="content col-10 p-0">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
   </div>
 </div>
 </body>

@@ -10,10 +10,9 @@
   <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 
-<body class="min-vh-100">
-<div class="container">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<body>
+<div class="devise-container container p-5">
+<%= render 'layouts/messages' %>
       <%= yield %>
 </div>
 </body>

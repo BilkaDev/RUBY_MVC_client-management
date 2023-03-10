@@ -1,0 +1,38 @@
+<div class="sidebar col-2 text-white px-4 text-center">
+  <section class="date-box">
+    <p class="mb-0 day">Środa</p>
+    <p class="mb-0 time">12:00</p>
+    <p class="mb-0 date text-muted">20/20/2020</p>
+  </section>
+  <section class="menu">
+    <a href="/" class="active">
+      <div class="menu-item">
+        <i class="bi bi-file-earmark-bar-graph">Home</i>
+      </div>
+    </a>
+    <a href="/">
+      <div class="menu-item">
+        <i class="bi bi-people">Clients</i>
+      </div>
+    </a>
+    <a href="/">
+      <div class="menu-item">
+        <i class="bi bi-card-checklist">ToDo</i>
+      </div>
+    </a>
+    <a href="/">
+      <div class="menu-item">
+        <i class="bi bi-calendar-check">Calendar</i>
+      </div>
+    </a>
+  </section>
+  <section class="profile">
+    <p class="h1">Profile:</p>
+    <%= button_to("Logout", destroy_user_session_path,
+                class: "btn btn-danger logout-button", method: :delete) %>
+  </section>
+  <section class="info-box mt-3">
+    <h3>Marcin Biłka CRM</h3>
+    <p class="text-muted">&copy;Copyright 2023</p>
+  </section>
+</div>
