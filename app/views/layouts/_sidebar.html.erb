@@ -1,4 +1,4 @@
-<div class="sidebar col-2 text-white px-4 text-center">
+<div class="sidebar col-2 text-white px-4 text-center bg-primary">
   <section class="date-box">
     <p class="mb-0 day">Środa</p>
     <p class="mb-0 time">12:00</p>
@@ -6,25 +6,26 @@
   </section>
   <section class="menu">
     <%= link_to root_path do %>
-      <div class="menu-item">
+      <div class="menu-item <%= current_page?(root_path) && 'active' %>">
         <i class="bi bi-file-earmark-bar-graph">Home</i>
       </div>
     <% end %>
     <%= link_to clients_path do %>
-      <div class="menu-item">
+      <div class="menu-item <%= current_page?(clients_path) && 'active' %>">
         <i class="bi bi-people">Clients</i>
       </div>
     <% end %>
-    <a href="/">
-      <div class="menu-item">
+    <%= link_to root_path do %>
+      <div class="menu-item <%= current_page?(root_path) && 'active' %>">
         <i class="bi bi-card-checklist">ToDo</i>
       </div>
-    </a>
-    <a href="/">
-      <div class="menu-item">
+    <% end %>
+    <%= link_to root_path do %>
+      <div class="menu-item <%= current_page?(root_path) && 'active' %>">
         <i class="bi bi-calendar-check">Calendar</i>
       </div>
-    </a>
+    <% end %>
+
   </section>
   <section class="profile">
     <p class="h1">Profile:</p>
