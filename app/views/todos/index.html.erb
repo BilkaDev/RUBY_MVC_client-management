@@ -1,13 +1,32 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Todo manager</h1>
-<div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
-  <% end %>
-</div>
+<div class="container p-0 m-0 row">
 
-<%= link_to "New todo", new_todo_path %>
+  <%= render "new", todo: @todo %>
+
+
+  <div class="todos h-100">
+    <h2 class="mb-5">Todo</h2>
+    <% if @todos.length != 0 %>
+      <ul class="todos-list list-group overflow-auto">
+        <% @todos.each do |todo| %>
+          <li class="list-group-item d-flex align-items-center justify-content-between ">
+              <input class="form-check-input me-1" type="checkbox" value="" <%= todo.status === 0 ? "" : "checked" %> id="<%= todo.id %>">
+              <label class="form-check-label flex-grow-1 ms-1 position-relative" for="<%= todo.id %>">
+                <%= button_to '', todo_toggle_status_path(todo), method: :patch, class:"btn_label" %>
+                <%= todo.description %>
+              </label>
+            <div class="d-flex">
+              <%= button_to edit_todo_path(todo), method: :get, class: 'btn button' do %>
+                <i class="bi bi-pencil-square fs-2"></i>
+              <% end %>
+              <%= button_to todo, method: :delete, class: 'btn button' do %>
+                <i class="bi bi-trash3 fs-2"></i>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+</div>
