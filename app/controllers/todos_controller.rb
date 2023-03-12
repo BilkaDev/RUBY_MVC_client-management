@@ -7,10 +7,6 @@ class TodosController < ApplicationController
     @todo = Todo.new
   end
 
-  # GET /todos/1 or /todos/1.json
-  def show
-  end
-
   # GET /todos/1/edit
   def edit
   end

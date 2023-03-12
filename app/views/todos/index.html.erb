@@ -1,11 +1,10 @@
-<h1>Todo manager</h1>
+<h1 class="text-primary">Todo manager</h1>
 <div class="container p-0 m-0 row">
 
   <%= render "new", todo: @todo %>
 
 
-  <div class="todos h-100">
-    <h2 class="mb-5">Todo</h2>
+  <div class="todos h-100 m-0 p-0">
     <% if @todos.length != 0 %>
       <ul class="todos-list list-group overflow-auto">
         <% @todos.each do |todo| %>
