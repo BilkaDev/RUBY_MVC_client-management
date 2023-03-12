@@ -15,8 +15,8 @@
         <i class="bi bi-people">Clients</i>
       </div>
     <% end %>
-    <%= link_to root_path do %>
-      <div class="menu-item <%= current_page?(root_path) && 'active' %>">
+    <%= link_to todos_path do %>
+      <div class="menu-item <%= current_page?(todos_path) && 'active' %>">
         <i class="bi bi-card-checklist">ToDo</i>
       </div>
     <% end %>
