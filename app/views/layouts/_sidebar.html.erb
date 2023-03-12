@@ -11,21 +11,20 @@
       </div>
     <% end %>
     <%= link_to clients_path do %>
-      <div class="menu-item <%= current_page?(clients_path) && 'active' %>">
+      <div class="menu-item <%= active_page('clients') && 'active' %>">
         <i class="bi bi-people">Clients</i>
       </div>
     <% end %>
     <%= link_to todos_path do %>
-      <div class="menu-item <%= current_page?(todos_path) && 'active' %>">
+      <div class="menu-item <%= active_page('todos') && 'active' %>">
         <i class="bi bi-card-checklist">ToDo</i>
       </div>
     <% end %>
     <%= link_to root_path do %>
-      <div class="menu-item <%= current_page?(root_path) && 'active' %>">
+      <div class="menu-item <%= active_page('meetings') && 'active' %>">
         <i class="bi bi-calendar-check">Calendar</i>
       </div>
     <% end %>
-
   </section>
   <section class="profile">
     <p class="h1">Profile:</p>
