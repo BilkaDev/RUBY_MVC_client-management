@@ -7,10 +7,12 @@ class EmailValidator < ActiveModel::EachValidator
 end
 
 class Client < ApplicationRecord
+  belongs_to :user
+
   before_save { self.email = email.downcase }
   validates :fullname, presence: true
   validates :email, presence: true,
-            email: true,
-            uniqueness: { case_sensitive: false }
+            email: true
+            # ,uniqueness: { case_sensitive: false }
   validates :status, presence: true
 end
