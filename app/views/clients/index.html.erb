@@ -1,5 +1,6 @@
 <div class="clients-content">
-  <div class="clients-table">
+  <h1 class="text-primary">Clients manager</h1>
+  <div class="clients-table my-3">
     <table class="table align-middle mb-0 bg-white">
       <thead class="bg-primary text-white">
       <tr>
@@ -15,12 +16,12 @@
           <td>
             <div class="d-flex align-items-center client-name">
               <%= link_to client do %>
-              <div class="ms-3">
-                <p class="fw-bold mb-1"><%= client.fullname %>
-                </p>
-                <p class="text-muted mb-0"><%= client.email %></p>
-              </div>
-                <% end %>
+                <div class="ms-3">
+                  <p class="fw-bold mb-1"><%= client.fullname %>
+                  </p>
+                  <p class="text-muted mb-0"><%= client.email %></p>
+                </div>
+              <% end %>
             </div>
           </td>
           <td>
@@ -30,16 +31,14 @@
             <span class="">Dodać date</span>
           </td>
           <td>
-            <%= link_to edit_client_path(client) do %>
-              <button type="button" class="btn button">
+            <div class="d-flex">
+              <%= button_to edit_client_path(client), method: :get, class: "btn button" do %>
                 <i class="bi bi-pencil-square fs-2"></i>
-              </button>
-            <% end %>
-            <%= link_to client do %>
-              <button type="button" class="btn button">
+              <% end %>
+              <%= link_to client, method: :delete, class: "btn button" do %>
                 <i class="bi bi-eye fs-2"></i>
-              </button>
-            <% end %>
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>

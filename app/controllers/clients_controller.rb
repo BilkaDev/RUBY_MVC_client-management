@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
   # GET /clients or /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.where('user_id': current_user.id)
   end
 
   # GET /clients/1 or /clients/1.json
@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
 
   # POST /clients or /clients.json
   def create
-    @client = Client.new(client_params)
+    @client = Client.new(client_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @client.save
@@ -37,7 +37,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1 or /clients/1.json
   def update
     respond_to do |format|
-      if @client.update(client_params)
+      if @client.update(client_params.merge(user_id: current_user))
         format.html { redirect_to client_url(@client), notice: "Client was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else
@@ -58,13 +58,14 @@ class ClientsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_client
-      @client = Client.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def client_params
-      params.require(:client).permit(:fullname, :email, :notes, :phone_number, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_client
+    @client = Client.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def client_params
+    params.require(:client).permit(:fullname, :email, :notes, :phone_number, :status, :user_id)
+  end
 end
