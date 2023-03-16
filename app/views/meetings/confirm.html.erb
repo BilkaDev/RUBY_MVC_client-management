@@ -1,0 +1,4 @@
+<h1 class="text-primary mt-3">Confirm meeting</h1>
+<%= render 'meeting', meeting: @meeting %>
+
+<%= button_to 'Confirm meetings', meeting_confirm_meeting_path, method: :patch, class: 'mt-3 text-white fs-4 btn button bg-primary' %>

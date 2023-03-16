@@ -1,29 +1,35 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: %i[ index show edit update destroy create ]
+  before_action :set_meeting, only: %i[ show edit update destroy confirm confirm_meeting]
+  before_action :set_client, only: %i[ show confirm confirm_meeting]
+  before_action :set_clients, only: %i[ index edit ]
 
   # GET /meetings or /meetings.json
   def index
     @meetings = Meeting.where('user_id': current_user.id)
     @meeting = Meeting.new
-    @clients = Client.where('user_id': current_user.id)
   end
 
   # GET /meetings/1 or /meetings/1.json
   def show
-    @client = Client.find( @meeting.client_id)
   end
 
   # GET /meetings/1/edit
   def edit
-    @clients = Client.where('user_id': current_user.id)
+  end
+
+  # GET /meetings/1/confirm
+  def confirm
   end
 
   # POST /meetings or /meetings.json
   def create
     @meeting = Meeting.new(meeting_params.merge(user_id: current_user.id))
-
     respond_to do |format|
       if @meeting.save
+        @user = User.find(@meeting.user_id)
+        @client = Client.find(@meeting[:client_id])
+        ConfirmMailer.confirm_message(@meeting, @user, @client).deliver_now
         format.html { redirect_to meetings_url, notice: "Meeting was successfully created." }
         format.json { render :show, status: :created, location: @meeting }
       else
@@ -56,11 +62,32 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def confirm_meeting
+    @meeting[:confirmed] = 1
+    respond_to do |format|
+      if @meeting.save
+        format.html { redirect_to meeting_confirm_path, notice: "Meeting was successfully updated."}
+        format.json { render :confirm, status: :ok, location: :confirm }
+      else
+        format.html { redirect_to meeting_confirm_path, alert: "Sorry, please contact with us..." }
+        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_meeting
-    @meeting = Meeting.find(params[:id])
+    @meeting = Meeting.find(params[:id].blank? ? params[:meeting_id] : params[:id])
+  end
+
+  def set_client
+    @client = Client.find(@meeting[:client_id])
+  end
+
+  def set_clients
+    @clients = Client.where('user_id': current_user.id)
   end
 
   # Only allow a list of trusted parameters through.

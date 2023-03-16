@@ -1,0 +1,32 @@
+<<%= @user[:email] %> send you message.
++++++++++++++++++++++++++++++++++++++++
+
+Confirm meeting invitation with <%= @user[:email] %>
+
+The meeting will be held:
+Date:
+<%= @message.start_time.to_date %>
+Start-time:
+<%= @message.start_time.hour %>:00
+Duration:
+<%= @message.end_time.hour - @message.start_time.hour %>h
+
++++++++++++++++++++++++++++++++++++++++
+Please confirm your appointment:
+LINK_CONFIRM
+
+OR
+
+Contact with <% @user[:email] %> and schedule another date
+
++++++++++++++++++++++++++++++++++++++++
+
+<% if @message[:details].present? %>
+  Meeting details:
+  <%= @message[:details] %>
+<% end %>
+
+
+Greetings and have a nice day.
+
++++++++++++++++++++++++++++++++++++++++

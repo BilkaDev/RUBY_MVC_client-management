@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_todo, only: %i[ show edit update destroy ]
 
   # GET /todos or /todos.json
