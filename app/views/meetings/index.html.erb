@@ -1,0 +1,77 @@
+<% if @meeting.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(@meeting.errors.count, "error") %> prohibited this client from being saved:</h2>
+
+    <ul>
+      <% @meeting.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <%= link_to meetings_path do%>
+    <button class="btn button bg-primary text-white fs-2">Back to meetings</button>
+    <% end %>
+<% end %>
+
+<% if !@meeting.errors.any? %>
+  <%= render 'modal-new', meeting: @meeting %>
+<div class="meetings-content">
+  <h1 class="text-primary">Meetings manager</h1>
+  <button data-bs-target="#addNewMeeting" data-bs-toggle="modal" type="button" class=" mt-3 btn button fs-2 bg-primary text-white">Add
+    meeting
+  </button>
+  <div class="meetings-table my-3">
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-primary text-white table-striped">
+      <tr>
+        <th rowspan="2">
+          <%= Date.today.beginning_of_week(:monday).strftime('%B') %>
+
+        </th>
+        <th>Monday</th>
+        <th>Thursday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+        <th>Sunday</th>
+      </tr>
+      <tr>
+        <% (0..6).each do |day| %>
+          <th class="month">
+            <%= get_week_day day %>
+          </th>
+        <% end %>
+      </tr>
+      </thead>
+      <tbody>
+      <% (1..24).each do |hour| %>
+        <tr class="text-primary">
+          <td class="table-body__hour">
+            <%= hour > 12 ? hour - 12 : hour %>:00<%= hour < 13 ? 'am' : 'pm' %>
+          </td>
+
+          <% (0..6).each do |day| %>
+            <td class="position-relative">
+              <button data-bs-target="#addNewMeeting" data-bs-toggle="modal" type="button" class="add-meeting-btn-un-style"></button>
+              <% @meetings.each do |meeting| %>
+                <% if is_meeting(meeting, hour, get_week_day(day)) %>
+                  <%= link_to meeting do %>
+                    <div class="bg-primary text-white btn w-75 fs-5 show-meeting-btn">
+                      <%= meeting.client.fullname %>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+
+
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% end %>

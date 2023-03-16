@@ -8,6 +8,7 @@ end
 
 class Client < ApplicationRecord
   belongs_to :user
+  has_many :meetings, dependent: :destroy
 
   before_save { self.email = email.downcase }
   validates :fullname, presence: true

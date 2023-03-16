@@ -1,0 +1,13 @@
+<div class="d-flex flex-column">
+  <h1 class="my-3 text-primary">Meeting with client
+    <% @client.fullname %></h1>
+  <%= render 'meeting', meeting: @meeting %>
+</div>
+
+
+<div>
+  <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> |
+  <%= link_to "Back to meetings", meetings_path %>
+
+  <%= button_to "Destroy this meeting", @meeting, method: :delete, class: 'text-white fs-4 btn button bg-danger' %>
+</div>

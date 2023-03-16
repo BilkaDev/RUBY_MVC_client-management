@@ -1,27 +1,27 @@
-<div id="<%= dom_id client %>">
-  <p>
-    <strong>Fullname:</strong>
-    <%= client.fullname %>
-  </p>
 
-  <p>
-    <strong>Email:</strong>
-    <%= client.email %>
-  </p>
-
-  <p>
-    <strong>Notes:</strong>
-    <%= client.notes %>
-  </p>
-
-  <p>
-    <strong>Phone number:</strong>
+<p class="h3 m-2">Email:
+  <span class="fw-normal"><%= @client.email %></span>
+</p>
+<p class="h3 m-2">Full name:
+  <span class="fw-normal"><%= @client.fullname %></span>
+</p>
+<p class="h3 m-2">Phone number:
+  <span class="fw-normal">
     <%= client.phone_number %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= client.status %>
-  </p>
-
+  </span>
+</p>
+<p class="h3 m-2">Next date:
+  <span class="fw-normal">
+    <%= get_next_date(@meetings) %>
+  </span>
+</p>
+<p class="h3 m-2">Status:
+  <span class="fw-normal"><%= client.status %></span>
+</p>
+<div class="form-floating">
+  <p class="h3 m-2">Notes:</p><textarea disabled cols="40" rows="10">
+    <%= client.notes %>
+    </textarea>
 </div>
+
+

@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_todo, only: %i[ show edit update destroy ]
 
   # GET /todos or /todos.json
@@ -20,7 +21,7 @@ class TodosController < ApplicationController
         format.html { redirect_to todos_url, notice: "Todo was successfully created." }
         format.json { render todos_url, status: :created, location: @todo }
       else
-        format.html { render :index, status: :unprocessable_entity }
+        format.html { redirect_to :index, alert: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
       end
     end

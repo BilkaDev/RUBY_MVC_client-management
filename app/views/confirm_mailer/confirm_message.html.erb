@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<p><%= @user[:email] %> send to you message.</p>
+<p><b>Confirm meeting invitation with <%= @user[:email] %></b></p>
+<p>The meeting will be held:</p>
+
+<p>Date:
+  <span><%= @message.start_time.to_date %></span>
+</p>
+<p>Start-time:
+  <span><%= @message.start_time.hour %>:00</span>
+</p>
+<p>Duration:
+  <span><%= @message.end_time.hour - @message.start_time.hour %>h</span>
+</p>
+
+<hr>
+<p><b>
+  Please confirm your appointment:
+</b></p>
+
+<a href="http://<%= Rails.application.routes.default_url_options[:host] %>/meetings/<%= @message[:id] %>/confirm">Link to confirm meeting</a>
+
+<p>OR</p>
+
+<p>
+  Contact with
+  <b>
+    <% @user[:email] %> and schedule another date</b>
+</p>
+<hr>
+
+<% if @message[:details].present? %>
+  <p>Meeting details:</p>
+  <p><%= @message[:details] %></p>
+<% end %>
+<br>
+<br>
+<p><b>Greetings and have a nice day
+</b></p>
+</body>
+</html>
