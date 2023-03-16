@@ -4,10 +4,12 @@ class ClientsController < ApplicationController
   # GET /clients or /clients.json
   def index
     @clients = Client.where('user_id': current_user.id)
+    @meetings = Meeting.where('user_id': current_user.id)
   end
 
   # GET /clients/1 or /clients/1.json
   def show
+    @meetings = Meeting.where('user_id': current_user.id, client_id: @client.id)
   end
 
   # GET /clients/new
@@ -37,7 +39,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1 or /clients/1.json
   def update
     respond_to do |format|
-      if @client.update(client_params.merge(user_id: current_user))
+      if @client.update(client_params.merge(user_id: current_user.id))
         format.html { redirect_to client_url(@client), notice: "Client was successfully updated." }
         format.json { render :show, status: :ok, location: @client }
       else

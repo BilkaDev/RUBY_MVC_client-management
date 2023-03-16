@@ -10,10 +10,12 @@ class MeetingsController < ApplicationController
 
   # GET /meetings/1 or /meetings/1.json
   def show
+    @client = Client.find( @meeting.client_id)
   end
 
   # GET /meetings/1/edit
   def edit
+    @clients = Client.where('user_id': current_user.id)
   end
 
   # POST /meetings or /meetings.json

@@ -1,32 +1,20 @@
-<div id="<%= dom_id meeting %>">
-  <p>
-    <strong>User:</strong>
-    <%= meeting.user_id %>
-  </p>
-
-  <p>
-    <strong>Client:</strong>
-    <%= meeting.client_id %>
-  </p>
-
-  <p>
-    <strong>Start time:</strong>
-    <%= meeting.start_time %>
-  </p>
-
-  <p>
-    <strong>End time:</strong>
-    <%= meeting.end_time %>
-  </p>
-
-  <p>
-    <strong>Confirmed:</strong>
-    <%= meeting.confirmed %>
-  </p>
-
-  <p>
-    <strong>Details:</strong>
-    <%= meeting.details %>
-  </p>
-
+<p class="h3 m-0">Email:
+  <span class="fw-normal"><%= @client.email %></span>
+</p>
+<p class="h3 m-0">Date:
+  <span class="fw-normal"><%= @meeting.start_time.to_date %></span>
+</p>
+<p class="h3 m-0">Start-time:
+  <span class="fw-normal"><%= @meeting.start_time.hour %>:00</span>
+</p>
+<p class="h3 m-0">Duration:
+  <span class="fw-normal"><%= @meeting.end_time.hour - @meeting.start_time.hour %>h</span>
+</p>
+<p class="h3 m-0">Confirmed:
+  <span class="fw-normal"><%= @meeting.confirmed === 0 ? "No" : 'Yes' %></span>
+</p>
+<div class="form-floating">
+  <p class="h3 m-0">Details:</p><textarea disabled cols="40" rows="10">
+      <%= @meeting.details %>
+    </textarea>
 </div>

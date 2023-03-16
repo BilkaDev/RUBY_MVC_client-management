@@ -28,7 +28,7 @@
             <p class="fw-normal mb-1 badge text-bg-<%= status_parser client.status %>"><%= client.status %></p>
           </td>
           <td>
-            <span class="">Dodać date</span>
+            <span class=""><%= get_next_date @meetings.select {|meeting| meeting[:client_id] === client.id} %></span>
           </td>
           <td>
             <div class="d-flex">

@@ -11,32 +11,32 @@
     </div>
   <% end %>
 
-  <div>
+  <div class="mt-2">
     <%= form.label :fullname, style: "display: block" %>
     <%= form.text_field :fullname %>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.label :email, style: "display: block" %>
     <%= form.text_field :email %>
   </div>
 
-  <div>
-    <%= form.label :notes, style: "display: block" %>
-    <%= form.text_field :notes %>
-  </div>
-
-  <div>
+  <div class="mt-2">
     <%= form.label :phone_number, style: "display: block" %>
     <%= form.text_field :phone_number %>
   </div>
 
-  <div>
+  <div class="mt-2">
     <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.select :status, [["Active", "active"], ["Finish", "finish"], ["Pending", "pending"]] %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mt-2">
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.text_area :notes, cols: 40, rows: 5 %>
+  </div>
+
+  <div class="mt-2 ">
+    <%= form.submit class: 'btn bg-primary button text-white fs-4' %>
   </div>
 <% end %>
