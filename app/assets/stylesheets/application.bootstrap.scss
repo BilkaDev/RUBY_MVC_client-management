@@ -108,6 +108,7 @@ body {
 
 .clients-table {
   overflow: auto;
+  max-height: 60vh;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   -webkit-box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.35);
@@ -136,10 +137,65 @@ body {
 }
 
 .btn_label {
- all: unset;
+  all: unset;
   position: absolute;
   top: 0;
   left: -20px;
-  right:0;
+  right: 0;
   height: 100%;
+}
+
+
+// meetings
+.meetings-content {
+  position: relative;
+}
+
+.meetings-table {
+  overflow: auto;
+  max-height: 60vh;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.35);
+}
+
+.meetings-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.meetings-table thead th {
+  border-bottom-width: 0;
+  text-align: center;
+}
+
+.meetings-table tbody td {
+  border-right-width: 1px;
+  text-align: center;
+}
+
+.meetings-table tbody td:last-of-type {
+  border-right-width: 0;
+}
+
+.meetings-table .month {
+  margin-right: 2px;
+}
+
+.table-body__hour {
+  width: 7rem;
+}
+
+.add-meeting-btn-un-style {
+  all: unset;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }

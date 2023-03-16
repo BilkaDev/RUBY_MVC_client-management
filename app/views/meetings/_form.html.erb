@@ -1,0 +1,38 @@
+<%= form_with(model: meeting) do |form| %>
+  <% if meeting.errors.any? %>
+    <div class="mt-2" style="color: red">
+      <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+        <% meeting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-2">
+    <%= form.label :client_id, style: "display: block" %>
+    <%= form.select :client_id, options_for_select(@clients.map { |c| [c.fullname, c.id] }), selected: '1' %>
+
+  </div>
+
+  <div class="mt-2">
+    <%= form.label :start_time_day, style: "display: block" %>
+    <%= form.date_field :start_time,value: Date.today.strftime('%Y-%m-%d'), min: DateTime.now.strftime('%Y-%m-%d') %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.label :start_time_hour, style: "display: block" %>
+    <%= form.time_select :start_time_hour, minute_step: 60, default: Time.current.change(min: 0) %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.label :details, style: "display: block" %>
+    <%= form.text_field :details %>
+  </div>
+
+  <div class="mt-2 ">
+    <%= form.submit class: 'btn bg-primary button text-white fs-4' %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_14_225607) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_14_233631) do
   create_table "clients", force: :cascade do |t|
     t.string "fullname", null: false
     t.string "email", null: false
@@ -21,6 +21,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_225607) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_clients_on_user_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time"
+    t.integer "confirmed", default: 0, null: false
+    t.string "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_meetings_on_client_id"
+    t.index ["start_time"], name: "index_meetings_on_start_time", unique: true
+    t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
   create_table "todos", force: :cascade do |t|
@@ -45,5 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_14_225607) do
   end
 
   add_foreign_key "clients", "users"
+  add_foreign_key "meetings", "clients"
+  add_foreign_key "meetings", "users"
   add_foreign_key "todos", "users"
 end

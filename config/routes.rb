@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :meetings
   resources :todos do
     patch :toggle_status
   end

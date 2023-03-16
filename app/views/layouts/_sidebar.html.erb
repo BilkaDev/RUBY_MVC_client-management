@@ -1,8 +1,10 @@
 <div class="sidebar col-2 text-white px-4 text-center bg-primary">
   <section class="date-box">
-    <p class="mb-0 day">Środa</p>
+    <p class="mb-0 day"><%=Date.today.strftime('%A') %></p>
     <p class="mb-0 time">12:00</p>
-    <p class="mb-0 date text-muted">20/20/2020</p>
+    <p class="mb-0 date text-muted">
+      <%= Date.today %>
+    </p>
   </section>
   <section class="menu">
     <%= link_to root_path do %>
@@ -20,7 +22,7 @@
         <i class="bi bi-card-checklist">ToDo</i>
       </div>
     <% end %>
-    <%= link_to root_path do %>
+    <%= link_to meetings_path do %>
       <div class="menu-item <%= active_page('meetings') && 'active' %>">
         <i class="bi bi-calendar-check">Calendar</i>
       </div>
