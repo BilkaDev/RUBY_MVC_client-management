@@ -25,7 +25,7 @@
             </div>
           </td>
           <td>
-            <p class="fw-normal mb-1 badge text-bg-<%= status_parser client.status %>"><%= client.status %></p>
+            <p class="fw-normal mb-1 badge text-bg-<%= status_parser client.status %>"><%= client.status.capitalize %></p>
           </td>
           <td>
             <span class=""><%= get_next_date @meetings.select {|meeting| meeting[:client_id] === client.id} %></span>
