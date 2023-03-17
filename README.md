@@ -1,24 +1,37 @@
-# README
+# MVC RUBY Client Management 
+## Application Description
+I have made a client management app.You can invite a client to the app to join meetings, you can look which client has an order open or finished and you can add to do task. I did this project for school and I didn’t want too many functionsally.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Technology:
+ruby v3.2.1
 
-* System dependencies
+rails - 7.0.2
 
-* Configuration
+css bootstrap
 
-* Database creation
+db: sqlite3
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Installation
 
-* Deployment instructions
+To install my project you need yarn
 
-* ...
+https://classic.yarnpkg.com/lang/en/docs/install/
+
+Run app.
+In app directory
+```bash
+bin/dev
+
+or
+
+rails s
+```
+    
+## App runs on the:
+```
+http://localhost:3000
+```
